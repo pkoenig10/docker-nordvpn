@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl jq && \
     curl https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb -o /tmp/nordvpn.deb && \
     apt-get install -y /tmp/nordvpn.deb && \
     apt-get update && \
@@ -12,3 +12,6 @@ COPY ./nordvpn.sh /nordvpn.sh
 RUN chmod +x /nordvpn.sh
 
 ENTRYPOINT [ "/nordvpn.sh" ]
+
+HEALTHCHECK --start-period=10s \
+  CMD curl -m 10 -s https://api.nordvpn.com/vpn/check | jq -r '.status' | grep -q Protected
