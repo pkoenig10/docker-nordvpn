@@ -14,4 +14,4 @@ RUN chmod +x /nordvpn.sh
 ENTRYPOINT [ "/nordvpn.sh" ]
 
 HEALTHCHECK --start-period=10s \
-  CMD curl -m 10 -s https://api.nordvpn.com/vpn/check | jq -r '.status' | grep -q Protected
+  CMD curl -m 10 -s https://api.nordvpn.com/vpn/check/full | jq -r '.status' | grep -q Protected
