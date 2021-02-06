@@ -10,7 +10,7 @@ while [ ! -S /run/nordvpnd.sock ]; do
 done
 
 nordvpn set dns 127.0.0.11
-nordvpn set technology nordlynx
+nordvpn set technology "${TECHNOLOGY:-openvpn}"
 
 nordvpn whitelist add subnet $(ip -o -4 addr show eth0 | tr -s ' ' | cut -d ' ' -f4)
 
