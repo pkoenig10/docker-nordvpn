@@ -20,6 +20,4 @@ nordvpn connect
 
 nordvpn status
 
-chattr -i /etc/resolv.conf
-
 exec tail -f --pid=$(pidof nordvpnd) /var/log/nordvpn/daemon.log

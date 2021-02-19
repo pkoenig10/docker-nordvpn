@@ -5,7 +5,7 @@ RUN apt-get update && \
     curl https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb -o /tmp/nordvpn.deb && \
     apt-get install -y /tmp/nordvpn.deb && \
     apt-get update && \
-    apt-get install -y nordvpn=3.8.5 && \
+    apt-get install -y nordvpn=3.7.4 && \
     rm -rf /tmp/* /var/lib/apt/lists/*
 
 COPY ./nordvpn.sh /nordvpn.sh
